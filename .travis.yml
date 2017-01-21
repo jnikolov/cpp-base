@@ -1,0 +1,12 @@
+language: cpp
+compiler:
+ - clang
+ - gcc
+os:
+ - linux
+script:
+  - mkdir bin
+  - cd bin
+  - conan install .. --build=missing
+  - cmake ..
+  - make
