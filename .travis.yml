@@ -9,22 +9,22 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - gcc-5
-      - g++-5
+      - gcc-6
+      - g++-6
       - lib32stdc++6
 
 install:
 # Upgrade GCC
-  - export CC=gcc-5
-  - export CXX=g++-5
+  - export CC=gcc-6
+  - export CXX=g++-6
   - mkdir -p $HOME/.local
   - curl -L https://cmake.org/files/v3.6/cmake-3.6.3-Linux-x86_64.tar.gz | tar -xz -C $HOME/.local --strip-components=1
 
 # Install conan
   - sudo pip install conan
 script:
-  - export CC=gcc-5
-  - export CXX=g++-5
+  - export CC=gcc-6
+  - export CXX=g++-6
   - export PKG_CONFIG_PATH=$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH
   - mkdir bin
   - cd bin
