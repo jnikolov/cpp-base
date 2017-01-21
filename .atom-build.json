@@ -1,0 +1,36 @@
+{
+  "cmd": "echo default Atom build, cmd-alt-b OR ctrl-alt-b => See https://atom.io/packages/build",
+  "__comment": {
+    "name": "<name of target>",
+    "args": [ "<argument1>", "<argument2>"],
+    "sh": true,
+    "cwd": "<current working directory for `cmd`>",
+    "env": {
+      "VARIABLE1": "VALUE1",
+      "VARIABLE2": "VALUE2"
+    },
+    "errorMatch": "^regexp$"
+  },
+  "targets": {
+    "conan-install": {
+      "sh" : true,
+      "cmd": "mkdir bin && cd bin && conan install .. --build=missing"
+    },
+
+    "cmake-generate": {
+      "cmd": "cd bin && cmake .."
+    },
+
+    "make": {
+      "cmd": "cd bin && make -j8"
+    },
+
+    "run": {
+      "cmd" : "./bin/bin/sampleApp"
+    },
+
+    "test": {
+      "cmd" : "./bin/bin/test.sampleApp"
+    }
+  }
+}
