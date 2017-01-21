@@ -3,6 +3,9 @@ project(base_project)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
 
 add_subdirectory(externals/catch)
 add_subdirectory(externals/spdlog)
