@@ -1,36 +1,44 @@
 {
-  "cmd": "echo default Atom build, cmd-alt-b OR ctrl-alt-b => See https://atom.io/packages/build",
-  "__comment": {
-    "name": "<name of target>",
-    "args": [ "<argument1>", "<argument2>"],
-    "sh": true,
-    "cwd": "<current working directory for `cmd`>",
-    "env": {
-      "VARIABLE1": "VALUE1",
-      "VARIABLE2": "VALUE2"
-    },
-    "errorMatch": "^regexp$"
-  },
-  "targets": {
-    "conan-install": {
-      "sh" : true,
-      "cmd": "mkdir bin && cd bin && conan install .. --build=missing"
-    },
+    "targets": {
+        "bootstrap": {
+            "cmd": "mkdir -p bin",
+            "sh": true
+        },
 
-    "cmake-generate": {
-      "cmd": "cd bin && cmake .."
-    },
+        "install": {
+            "cmd": "conan install .. --build=missing",
+            "sh": true,
+            "cwd": "{PROJECT_PATH}/bin"
+        },
 
-    "make": {
-      "cmd": "cd bin && make -j8"
-    },
+        "generate": {
+            "cmd": "cmake ..",
+            "sh": true,
+            "cwd": "{PROJECT_PATH}/bin"
+        },
 
-    "run": {
-      "cmd" : "./bin/bin/sampleApp"
-    },
+        "make": {
+            "cmd": "cmake --build . --config Debug -- -j8",
+            "sh": true,
+            "cwd": "{PROJECT_PATH}/bin"
+        },
 
-    "test": {
-      "cmd" : "./bin/bin/test.sampleApp"
+        "clean": {
+          "cmd": "cmake --build . --target 'clean'",
+          "sh": true,
+          "cwd": "{PROJECT_PATH}/bin"
+        },
+
+        "run": {
+            "cmd": "./sampleApp",
+            "sh": true,
+            "cwd": "{PROJECT_PATH}/bin/bin"
+        },
+
+        "test": {
+            "cmd": "./test.sampleApp",
+            "sh": true,
+            "cwd": "{PROJECT_PATH}/bin/bin"
+        }
     }
-  }
 }
