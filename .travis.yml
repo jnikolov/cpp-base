@@ -10,3 +10,4 @@ script:
   - conan install .. --build=missing
   - cmake ..
   - make
+  
