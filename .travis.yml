@@ -31,4 +31,4 @@ script:
   - conan install .. --build=missing
   - cmake ..
   - make
-  - ./bin/bin/test.sampleApp
+  - ./bin/test.sampleApp
