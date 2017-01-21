@@ -1,4 +1,4 @@
-project(Catch LANGUAGES CXX)
+project(catch LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} INTERFACE)
 
@@ -11,4 +11,4 @@ install(TARGETS ${PROJECT_NAME}
 
 install(DIRECTORY include/ DESTINATION include)
 
-export(TARGETS ${PROJECT_NAME} FILE Catch.cmake)
+export(TARGETS ${PROJECT_NAME} FILE catch.cmake)

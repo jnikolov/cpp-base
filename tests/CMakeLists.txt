@@ -5,4 +5,4 @@ set(SRC_LIST
  )
 
 add_executable(${PROJECT_NAME} ${SRC_LIST})
-target_link_libraries(${PROJECT_NAME} Catch)
+target_link_libraries(${PROJECT_NAME} catch)
